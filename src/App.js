@@ -9,6 +9,10 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
+import GuideCreate from './components/Guides/GuideCreate'
+import Guides from './components/Guides/GuideIndex'
+import GuideShow from './components/Guides/GuideShow'
+import GuideEdit from './components/Guides/GuideEdit'
 
 class App extends Component {
   constructor () {
@@ -65,6 +69,33 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/guides' render={() => (
+            <Guides
+              user={user}
+              msgAlert={this.msgAlert}
+            />
+          )}/>
+          <AuthenticatedRoute user={user} path='/guides-create' render={() => (
+            <GuideCreate
+              user={user}
+              msgAlert={this.msgAlert}
+            />
+          )}/>
+          <AuthenticatedRoute user={user} path='/guides/:guideId' render={({ match }) => (
+            <GuideShow
+              user={user}
+              msgAlert={this.msgAlert}
+              match={match}
+            />
+          )}/>
+          <AuthenticatedRoute user={user} path='/guide-update/:guideId' render={({ match, history }) => (
+            <GuideEdit
+              match={match}
+              history={history}
+              user={user}
+              msgAlert={this.msgAlert}
+            />
+          )}/>
         </main>
       </Fragment>
     )
