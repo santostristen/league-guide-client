@@ -5,16 +5,16 @@ import { Redirect } from 'react-router-dom'
 import { createGuide } from '../../api/guides'
 
 class GuideCreate extends Component {
-constructor () {
-  super()
-  this.state = {
-    guide: {
-      title: '',
-      text: ''
-    },
-    createdId: null
+  constructor () {
+    super()
+    this.state = {
+      guide: {
+        title: '',
+        text: ''
+      },
+      createdId: null
+    }
   }
-}
 
 handleChange = (event) => {
   const updatedField = { [event.target.name]: event.target.value }

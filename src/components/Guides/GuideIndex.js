@@ -60,4 +60,4 @@ class Guides extends Component {
   }
 }
 
-export default Retailers
+export default Guides

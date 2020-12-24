@@ -1,54 +1,42 @@
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 
-export const indexGuides = (user) => {
+export const indexGuides = () => {
   return axios({
     method: 'GET',
-    url: apiUrl + '/guides',
-    headers: {
-      Authorization: `Bearer ${user.token}`
-    }
+    url: apiUrl + '/guides/'
   })
 }
 
-export const deleteGuide = (user, guideId) => {
+export const deleteGuide = (guideId) => {
   return axios({
     method: 'DELETE',
-    url: apiUrl + '/guides/' + guideId,
-    headers: {
-      Authorization: `Bearer ${user.token}`
-    }
+    url: `${apiUrl}/guides/${guideId}/`
   })
 }
 
-export const createGuide = (user, guide) => {
+export const createGuide = (token, guide) => {
   return axios({
     method: 'POST',
-    url: apiUrl + '/guides',
+    url: apiUrl + '/guides/',
     headers: {
-      Authorization: `Bearer ${user.token}`
+      Authorization: `Token ${token}`
     },
     data: { guide }
   })
 }
 
-export const editGuide = (user, guide, id) => {
+export const editGuide = (guide, id) => {
   return axios({
     method: 'PATCH',
-    url: apiUrl + '/guides/' + id,
-    headers: {
-      Authorization: `Bearer ${user.token}`
-    },
+    url: `${apiUrl}/guides/${id}/`,
     data: { guide: guide }
   })
 }
 
-export const showGuide = (user, guideId) => {
+export const showGuide = (guideId) => {
   return axios({
     method: 'GET',
-    url: apiUrl + '/guides/' + guideId,
-    headers: {
-      Authorization: `Bearer ${user.token}`
-    }
+    url: `${apiUrl}/guides/${guideId}/`
   })
 }
